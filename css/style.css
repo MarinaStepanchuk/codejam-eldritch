@@ -1,0 +1,132 @@
+
+@font-face {
+    font-family: 'Sunday';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/cd2f1-36d91_sunday.ttf'); 
+}
+
+body {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    min-width: 480px;
+    min-height: 100vh;
+    font-family: 'Sunday', 'Arial', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    background: url("../assets/bg.jpg") left/cover, rgba(0, 0, 0, 0);
+    overflow: hidden;
+}
+
+.ancient-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 36%;
+    font-size: 20px;
+    height: 100vh;
+}
+
+.ancient {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 20px 0px;
+}
+
+.ancient-card {
+    width: 35%;
+    transition: all 0.6s;
+    cursor: pointer;
+}
+
+.ancient-card:hover {
+    transform: scale(1.1);
+
+}
+
+.all-levels {
+    width: 60%;
+    font-size: 12px;
+    height: 30px;
+    margin-top: 10px;
+    font-family: 'Sunday', 'Arial', sans-serif;
+    margin-bottom: 50px;
+}
+
+.shuffle-deck {
+    position: absolute;
+    top: 40%;
+    left: 78%;
+    width: 10%;
+    height: 50px;
+    font-family: 'Sunday', 'Arial', sans-serif;
+    outline: none;
+	border: 1px solid #fff;
+	border-radius: 50px;
+    box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+	cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    width: 30%;
+    margin-right: 40px;
+}
+
+.current-state {
+    margin-top: 15px;
+}
+
+.dots-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.green {
+    background-color: rgb(46, 94, 19);
+}
+
+.brown {
+    background-color: rgb(156, 102, 50);
+}
+
+.blue {
+    background-color: rgb(54, 103, 160);
+}
+.card-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 90px;
+    gap: 20px;
+}
+
+.card {
+    width: 35%;
+}
+
+.cover-card {
+    cursor: pointer;
+}
+
