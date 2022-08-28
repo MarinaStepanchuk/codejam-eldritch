@@ -1,9 +1,11 @@
-import brownCards from './brown';
-import blueCards from './blue';
-import greenCards from './green';
+import greenCards from './green/index.js';
+import brownCards from './brown/index.js';
+import blueCards from './blue/index.js';
 
-export {
+const cards = {
+  greenCards,
   brownCards,
-  blueCards,
-  greenCards
+  blueCards
 }
+
+export default cards;
