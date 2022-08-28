@@ -1,68 +1,54 @@
 import cards from '../data/mythicCards/index.js';
 import ancients from '../data/ancients.js';
 
-const azathoth = document.querySelector('.azathoth');
-const cthulthu = document.querySelector('.cthulthu');
-const iogSothoth = document.querySelector('.iogSothoth');
-const shubNiggurath = document.querySelector('.shubNiggurath');
+// let easyGreen = [];
+// let normalGreen = [];
+// let hardGreen = [];
 
-const ancient = document.querySelector('.ancient');
+// cards.greenCards.forEach((element) => {
+//     if(element.difficulty === 'easy') {
+//         easyGreen.push(element);
+//     } else if(element.difficulty === 'normal') {
+//         normalGreen.push(element);
+//     } else {
+//         hardGreen.push(element);
+//     }
+// });
 
-//----------------
+// let easyBrown = [];
+// let normalBrown = [];
+// let hardBrown = [];
 
-let easyGreen = [];
-let normalGreen = [];
-let hardGreen = [];
+// cards.brownCards.forEach((element) => {
+//     if(element.difficulty === 'easy') {
+//         easyBrown.push(element);
+//     } else if(element.difficulty === 'normal') {
+//         normalBrown.push(element);
+//     } else {
+//         hardBrown.push(element);
+//     }
+// });
 
-cards.greenCards.forEach((element) => {
-    if(element.difficulty === 'easy') {
-        easyGreen.push(element);
-    } else if(element.difficulty === 'normal') {
-        normalGreen.push(element);
-    } else {
-        hardGreen.push(element);
-    }
-});
+// let easyBlue = [];
+// let normalBlue = [];
+// let hardBlue = [];
 
-let easyBrown = [];
-let normalBrown = [];
-let hardBrown = [];
-
-cards.brownCards.forEach((element) => {
-    if(element.difficulty === 'easy') {
-        easyBrown.push(element);
-    } else if(element.difficulty === 'normal') {
-        normalBrown.push(element);
-    } else {
-        hardBrown.push(element);
-    }
-});
-
-let easyBlue = [];
-let normalBlue = [];
-let hardBlue = [];
-
-cards.blueCards.forEach((element) => {
-    if(element.difficulty === 'easy') {
-        easyBlue.push(element);
-    } else if(element.difficulty === 'normal') {
-        normalBlue.push(element);
-    } else {
-        hardBlue.push(element);
-    }
-});
-
-// const stageContainer = document.querySelector('.stage-container')
-// const currentState1 = document.querySelector('.state1').children[1];
-// const currentState2 = document.querySelector('.state2').children[1];
-// const currentState3 = document.querySelector('.state3').children[1];
+// cards.blueCards.forEach((element) => {
+//     if(element.difficulty === 'easy') {
+//         easyBlue.push(element);
+//     } else if(element.difficulty === 'normal') {
+//         normalBlue.push(element);
+//     } else {
+//         hardBlue.push(element);
+//     }
+// });
 
 const shuffleDeck = document.querySelector('.shuffle-deck');
 const cardBlock = document.querySelector('.card-wrapper');
 let choiceAncients 
 let level
 
-ancient.addEventListener('click', (event) => {
+document.querySelector('.ancient').addEventListener('click', (event) => {
     shuffleDeck.classList.remove('show');
     cardBlock.classList.remove('show');
 
@@ -72,12 +58,6 @@ ancient.addEventListener('click', (event) => {
             choiceAncients = elem;
         }
     })
-    // let counter = [];
-    // for (key in currentState1) {
-    //     key.innerHTML = 
-    // }
-    // currentState1.children[0].innerHTML = choiceAncients.firstStage.greenCards
-    // console.log(currentState1.children[1].children[0].innerHTML)
 });
 
 document.querySelector('select').addEventListener('click', (event) => {
@@ -89,13 +69,24 @@ document.querySelector('select').addEventListener('click', (event) => {
 let setColorCard = (colorCards) => {
     let deck = [];
     while(deck.length < (choiceAncients.firstStage[colorCards] + choiceAncients.secondStage[colorCards] + choiceAncients.thirdStage[colorCards])){
-        let i = cards[colorCards][Math.floor(Math.random()*cards[colorCards].length)];
-        if(!deck.includes(i)) {
-            deck.push(i)
+        let z = cards[colorCards][Math.floor(Math.random()*cards[colorCards].length)];
+        if(!deck.includes(z)) {
+            deck.push(z)
         }
     }
     return deck
 }
+
+let mixCards = () => {
+    let deck =[]
+
+}
+
+const currents = document.querySelectorAll('.dot');
+let firstStageDeck
+let secondStageDeck
+let thirdStageDeck
+let deck
 
 shuffleDeck.addEventListener('click', () => {
     cardBlock.classList.add('show');
@@ -105,7 +96,39 @@ shuffleDeck.addEventListener('click', () => {
     let brown = setColorCard('brownCards');
     let blue = setColorCard('blueCards');
 
-    let firstStageDeck = [].concat(green.slice(0,choiceAncients.firstStage.greenCards),brown.slice(0,choiceAncients.firstStage.brownCards),blue.slice(0,choiceAncients.firstStage.blueCards));
-    let secondStageDeck = [].concat(green.slice(choiceAncients.firstStage.greenCards,(choiceAncients.firstStage.greenCards + choiceAncients.secondStage.greenCards)),brown.slice(choiceAncients.firstStage.brownCards,choiceAncients.firstStage.brownCards + choiceAncients.secondStage.brownCards),blue.slice(choiceAncients.firstStage.blueCards,choiceAncients.firstStage.blueCards + choiceAncients.secondStage.blueCards));
-    let thirdStageDeck = [].concat(green.slice(choiceAncients.firstStage.greenCards + choiceAncients.secondStage.greenCards,(choiceAncients.firstStage.greenCards + choiceAncients.secondStage.greenCards + choiceAncients.thirdStage.greenCards)),brown.slice(choiceAncients.firstStage.brownCards + choiceAncients.secondStage.brownCards,choiceAncients.firstStage.brownCards + choiceAncients.secondStage.brownCards + choiceAncients.thirdStage.brownCards),blue.slice(choiceAncients.firstStage.blueCards + choiceAncients.secondStage.blueCards,choiceAncients.firstStage.blueCards + choiceAncients.secondStage.blueCards + choiceAncients.thirdStage.blueCards));
+    let totalCards = [
+        choiceAncients.firstStage.greenCards, choiceAncients.firstStage.brownCards, choiceAncients.firstStage.blueCards,
+        choiceAncients.secondStage.greenCards, choiceAncients.secondStage.brownCards, choiceAncients.secondStage.blueCards,
+        choiceAncients.thirdStage.greenCards, choiceAncients.thirdStage.brownCards, choiceAncients.thirdStage.blueCards
+    ];
+
+    for (let i = 0; i < currents.length; i++) {
+        currents[i].innerHTML = totalCards[i];
+    };
+
+    firstStageDeck = [].concat(
+        green.slice(0,totalCards[0]),
+        brown.slice(0,totalCards[1]),
+        blue.slice(0,totalCards[2])
+    );
+
+    secondStageDeck = [].concat(
+        green.slice(totalCards[0],totalCards[0] + totalCards[3]),
+        brown.slice(totalCards[1],totalCards[1] + totalCards[4]),
+        blue.slice(totalCards[2],totalCards[2] + totalCards[5])
+    );
+
+    thirdStageDeck = [].concat(
+        green.slice(totalCards[0] + totalCards[3],totalCards[0] + totalCards[3] + totalCards[6]),
+        brown.slice(totalCards[1] + totalCards[4],totalCards[1] + totalCards[4] + totalCards[7]),
+        blue.slice(totalCards[2] + totalCards[5],totalCards[2] + totalCards[5] + totalCards[8])
+    );
+
+    deck = [].concat(firstStageDeck, secondStageDeck, thirdStageDeck);
 })
+
+const playCard = document.querySelector('.play-card')
+
+document.querySelector('.cover-card').addEventListener('click', () => {
+    playCard.classList.add('show')
+});
