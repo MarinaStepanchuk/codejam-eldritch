@@ -79,7 +79,7 @@ body {
     translate: all linear 0.5s;
 }
 
-.current-state {
+.current-stage {
     margin-top: 15px;
 }
 
@@ -138,6 +138,11 @@ body {
 .show {
     opacity: 1;
     visibility: inherit;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .scale {
