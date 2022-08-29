@@ -7,8 +7,6 @@ const playCard = document.querySelector('.play-card');
 const coverCard = document.querySelector('.cover-card');
 const currents = document.querySelectorAll('.dot');
 const ancientAll = document.querySelectorAll('.ancient-card');
-const deckShowContainer = document.querySelector('.deck');
-let decksShow;
 let choiceAncients ;
 let level;
 let levelCards;
@@ -16,15 +14,8 @@ let firstStageDeck;
 let secondStageDeck;
 let thirdStageDeck;
 let deckMix;
-let deck;
 let amountInAncientsByColor = {};
 let currentCards = 0;
-
-let cleanDeckShow = (container) => {
-    while(container.firstChild){
-        container.removeChild(container.firstChild);
-    }
-}
 
 document.querySelector('.ancient').addEventListener('click', (event) => {
     shuffleDeck.classList.remove('show');
@@ -118,11 +109,9 @@ document.querySelector('select').addEventListener('change', (event) => {
 });
 
 shuffleDeck.addEventListener('click', () => {
-    cleanDeckShow(deckShowContainer);
     cardBlock.classList.add('show');
     shuffleDeck.classList.remove('show');
     coverCard.classList.remove('hidden');
-    document.querySelector('.deck-text').classList.remove('hidden');
     playCard.classList.remove('show');
 
     let green = mixCards(amountInAncientsByColor.greenCards,levelCards.greenCards);
@@ -157,19 +146,6 @@ shuffleDeck.addEventListener('click', () => {
         blue.slice(totalCardsInDeck[2] + totalCardsInDeck[5],totalCardsInDeck[2] + totalCardsInDeck[5] + totalCardsInDeck[8])
     );
 
-    deck = [].concat(firstStageDeck, secondStageDeck, thirdStageDeck)
-    let left = 0;
-    deck.forEach((card) => {
-        let div = document.createElement('div');
-        deckShowContainer.append(div);
-        div.className = 'deck-card';
-        div.style.backgroundImage = `url('/assets/MythicCards/${card.color}/${card.id}.png')`;
-        div.style.left = `${left}%`;
-        left += 6;
-    })
-
-    decksShow = document.querySelectorAll('.deck-card');
-
     deckMix = [].concat(mixCards(firstStageDeck.length,firstStageDeck), mixCards(secondStageDeck.length,secondStageDeck), mixCards(thirdStageDeck.length,thirdStageDeck));
 });
 
@@ -200,14 +176,8 @@ coverCard.addEventListener('click', () => {
         playCard.src = `/assets/MythicCards/${deckMix[currentCards].color}/${deckMix[currentCards].id}.png`;
         playCard.classList.add('show');
         decreaseCounter(currentCards, deckMix[currentCards].color)
-        for(let i = 0; i < decksShow.length; i++) {
-            if(decksShow[i].style.backgroundImage.includes(`${deckMix[currentCards].id}.png`)) {
-                decksShow[i].style.bottom = '100%'
-            }
-        }
         if(currentCards === deckMix.length-1) {
             coverCard.classList.add('hidden');
-            document.querySelector('.deck-text').classList.add('hidden');
         }
         currentCards += 1;
     } else {

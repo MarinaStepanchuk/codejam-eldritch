@@ -129,9 +129,9 @@ body {
     flex-direction: column;
     justify-content: center;
     margin-right: 110px;
-    gap: 35px;
+    gap: 60px;
     width: 30%;
-    margin-right: 40px;
+    margin-right: 150px;
     opacity: 0;
     visibility: hidden;
     translate: all linear 0.5s;
@@ -175,7 +175,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 50px;
+    margin-bottom: 85px;
 }
 
 .card {
@@ -212,23 +213,4 @@ body {
     position: relative;
     left: 30px;
     align-self: flex-end;    
-}
-
-.deck {
-    width: 190%;
-    height: 137px;
-    position: relative;
-    left: 30px;
-    align-self: flex-end;
-    overflow: hidden;
-}
-
-.deck-card {
-    width: 10%;
-    height: 100%;
-    position: absolute;
-    bottom: 0;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    transition: all 0.5s;
 }
