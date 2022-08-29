@@ -84,11 +84,12 @@ let deckBuilding = (level, difficulty1, difficulty2) => {
     return levelCards;
 };
 
-document.querySelector('select').addEventListener('click', (event) => {
+document.querySelector('select').addEventListener('change', (event) => {
     if(!choiceAncients) {
-        alert('Древний не выбран! Для продолжения игры, пожалуйста, выберите древнего.');
+        alert('Древний не выбран!\n Для продолжения игры, пожалуйста, выберите древнего.');
         shuffleDeck.classList.remove('show');
         document.querySelector('select').value = 'choice';
+        shuffleDeck.classList.remove('show');
         return  
     } 
     level = event.target.value;
@@ -112,7 +113,6 @@ document.querySelector('select').addEventListener('click', (event) => {
                 deckBuilding(level, 'hard');
                 break;
             default:
-                alert('Уровень не задан! Выберите уровень сложности.');
                 shuffleDeck.classList.remove('show');
         }
 });
